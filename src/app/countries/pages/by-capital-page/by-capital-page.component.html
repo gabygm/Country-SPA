@@ -2,7 +2,9 @@
 <hr>
 <div class="row">
     <div class="col">
-        <shared-search-box placeholder="Buscar por  capital"></shared-search-box>
+        <shared-search-box 
+            (textSearch)="searchByCapital($event)"
+            placeholder="Buscar por  capital"></shared-search-box>
     </div>
 </div>
 <div class="row">

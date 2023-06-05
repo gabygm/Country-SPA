@@ -1,4 +1,6 @@
 <input 
     type="text"
     [placeholder]="placeholder" 
-    class="form-control">
+    #txtSearchInput
+    class="form-control"
+    (change)="addTextSearch(txtSearchInput.value)">
