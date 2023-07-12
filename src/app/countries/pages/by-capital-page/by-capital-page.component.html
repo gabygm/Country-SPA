@@ -9,7 +9,11 @@
 </div>
 <div class="row">
     <div class="col">
-        Tabla de Resultados
+        <ul>
+            <li *ngFor="let country of countries">
+                {{ country.name.common}}
+            </li>
+        </ul>
 
     </div>
 
