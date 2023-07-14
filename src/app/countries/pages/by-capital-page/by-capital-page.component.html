@@ -9,12 +9,7 @@
 </div>
 <div class="row">
     <div class="col">
-        <ul>
-            <li *ngFor="let country of countries">
-                {{ country.name.common}}
-            </li>
-        </ul>
-
+        <hr>
+        <country-table [countries] ="countries"></country-table>
     </div>
-
 </div>

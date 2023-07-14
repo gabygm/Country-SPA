@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CountryService } from '../../services/country.servive';
 import { Country } from '../../interfaces/country';
 
@@ -13,7 +13,6 @@ export class ByCapitalPageComponent {
   @Input() searchText = ''
   
   searchByCapital(term: string):void{
-    console.log("Desdee capital Page");
     this.countriesService.searchCapital(term).subscribe(countries => {
       this.countries = countries
     })
