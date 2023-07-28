@@ -13,7 +13,7 @@ export class ByCountryPageComponent {
   @Input() search = ''
   
   searchCountries(term: string): void{
-    this.service.searchCountry(term).subscribe(countries =>{
+    this.service.searchCountryBy(term, "name").subscribe(countries =>{
       this.countries = countries
     })
   }

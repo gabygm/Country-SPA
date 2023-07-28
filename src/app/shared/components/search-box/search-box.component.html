@@ -3,4 +3,5 @@
     [placeholder]="placeholder" 
     #txtSearchInput
     class="form-control"
-    (change)="addTextSearch(txtSearchInput.value)">
+    (keyup)="onKeyPress(txtSearchInput.value)"
+    >

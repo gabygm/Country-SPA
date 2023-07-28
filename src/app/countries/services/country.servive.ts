@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient} from "@angular/common/http"
 import { catchError, map, Observable, of } from "rxjs";
 import { Country } from '../interfaces/country';
+import { CacheStore } from "../interfaces/cache-store.inerface";
 
 @Injectable({
     providedIn: "root"
@@ -11,6 +12,12 @@ export class CountryService  {
     private baseUrl: string = "https://restcountries.com/v3.1"
 
     constructor(private httpClient: HttpClient){ }
+
+    public cacheStore: CacheStore = {
+        byCapital: { term: '', countries: []},
+        byCountries: { term: '', countries: []},
+        byRegion: { term: '', countries: []}
+    }
 
     searchCounntryByAlphaCode(query: string): Observable<Country | null> {
 
@@ -22,19 +29,10 @@ export class CountryService  {
             catchError(() => of<Country | null>(null))
         );
     }
-
-    searchCapital(query: string): Observable<Country[]>{
-        const url = `${this.baseUrl}/capital/${query}`
-        return this.httpClient.get<Country[]>(url).pipe(catchError(() => of([])))
-    }
-    
-    searchCountry(query: string): Observable<Country[]>{
-        const url = `${this.baseUrl}/name/${query}`
+     
+    searchCountryBy(query: string, route: string): Observable<Country[]>{
+        const url = `${this.baseUrl}/${route}/${query}`
         return this.httpClient.get<Country[]>(url).pipe(catchError(() => of([])))
     }
 
-    searchRegion(query: string): Observable<Country[]>{
-        const url = `${this.baseUrl}/region/${query}`
-        return this.httpClient.get<Country[]>(url).pipe(catchError(() => of([])))
-    }
 }

@@ -10,9 +10,12 @@ import { CountryService } from '../../services/country.servive';
 export class ByRegionPageComponent {
   public countries:Country[]  =[]
   constructor(private service: CountryService){}
+  public regions: string[] = ['Africa', 'America', 'Asia', 'Europe','Oceania']
+  public selectedRegion = ''
   
   searchCountries(term: string): void{
-    this.service.searchRegion(term).subscribe(countries =>{
+    this.selectedRegion = term
+    this.service.searchCountryBy(term, "region").subscribe(countries =>{
       this.countries = countries
     })
   }
